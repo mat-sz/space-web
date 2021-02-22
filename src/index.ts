@@ -2,6 +2,7 @@ import { Engine } from '@babylonjs/core/Engines/engine';
 import { Scene } from '@babylonjs/core/scene';
 import { Vector3 } from '@babylonjs/core/Maths/math';
 import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
+import { FreeCameraKeyboardMoveInput } from '@babylonjs/core/Cameras/Inputs/freeCameraKeyboardMoveInput';
 import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { GridMaterial } from '@babylonjs/materials/grid';
@@ -18,8 +19,16 @@ const scene = new Scene(engine);
 
 const material = new GridMaterial('grid', scene);
 
+const moveInput = new FreeCameraKeyboardMoveInput();
+moveInput.keysUp = [87];
+moveInput.keysDown = [83];
+moveInput.keysLeft = [65];
+moveInput.keysRight = [68];
+
 const camera = new FreeCamera('playerCamera', new Vector3(0, 1, 0), scene);
 camera.setTarget(Vector3.Zero());
+camera.inputs.removeByType('FreeCameraKeyboardMoveInput');
+camera.inputs.add(moveInput);
 camera.attachControl(canvas, true);
 
 const playerBox = Mesh.CreateBox('player', 1, scene);
