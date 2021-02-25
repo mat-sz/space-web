@@ -6,7 +6,6 @@ import { FreeCameraKeyboardMoveInput } from '@babylonjs/core/Cameras/Inputs/free
 import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { GridMaterial } from '@babylonjs/materials/grid';
-import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import '@babylonjs/core/Meshes/meshBuilder';
 
 import './App.scss';
